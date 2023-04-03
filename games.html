@@ -1,0 +1,272 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets\images\logo.png" />
+    <title>Encyclopedia - Sea Beasts Enthusiast</title>
+    <!-- CSS dan Bootstrap -->
+    <link rel="stylesheet" href="assets\css\bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="assets\js\jquery-3.6.3.min.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets\images\logo.png" alt="Logo" width="30" class="d-inline-block align-text-top" />
+          Sea Beasts Enthusiast
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="explore.html">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="encyclopedia.html">Encyclopedia</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">Games</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div class="container pt-5 pb-5" id="overlay">
+      <div class="row">
+        <div class="col">
+          <div class="card text-center landing">
+            <h3 class="card-header pt-3 pb-3 judul" style="font-weight: 700">THE QUIZ : DID U REMEMBER IT?</h3>
+            <div class="card-body pt-3 pb-5">
+              <h5 class="card-title pt-3" style="font-weight: 600">How To Play</h5>
+              <p class="card-text pt-3 pb-3 ps-3 pe-3 text-center" style="line-height: 180%">
+                Pertama, klik tombol Start Quiz untuk mulai memainkan kuis. <br />
+                Kedua, peserta menjawab dengan cara memilih jawaban yang dianggap benar sesuai pertanyaan yang ada. <br />
+                Ketiga, soal akan secara otomatis berganti jika peserta sudah mengklik opsi yang dipilih. <br />
+                Keempat, score akan muncul setelah soal berakhir dan peserta dapat melihat jawaban yang benar pada Check Answers. <br />
+                <span style="font-weight: 600; font-size: larger">Selamat Bermain!</span>
+              </p>
+              <button type="button" onclick="off()">Start Quiz</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function off() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("bgw").style.display = "block";
+        audio.play();
+        count = 1;
+        playPauseBTN.innerHTML = "&#9208;";
+      }
+    </script>
+    <!-- Akhir Landing Page -->
+
+    <div id="bgw" style="display: none">
+      <!-- Games -->
+      <div id="quiz-container">
+        <!-- Question Container -->
+        <div class="questions">
+          <h2 id="question"></h2>
+          <ol type="A">
+            <li class="option"><span class="span" id="option0" onclick="calcScore(this)"></span></li>
+            <li class="option"><span class="span" id="option1" onclick="calcScore(this)"></span></li>
+            <li class="option"><span class="span" id="option2" onclick="calcScore(this)"></span></li>
+            <li class="option"><span class="span" id="option3" onclick="calcScore(this)"></span></li>
+          </ol>
+          <h4 id="stat"></h4>
+        </div>
+
+        <div class="buttons" style="display: none">
+          <button type="button" class="next">Next</button>
+        </div>
+        <!-- AUDIO -->
+        <div class="buttons pt-3 pb-5">
+          <audio id="audio" autoplay loop>
+            <source src="assets\audio\songforgames.mp3" type="audio/mp3" />
+          </audio>
+          <button id="playPauseBTN" onclick="playPause()">&#9658;</button>
+        </div>
+      </div>
+
+      <!-- Scoreboard Section -->
+      <div id="scoreboard">
+        <img src="assets/images/logo.png" class="img" alt="" />
+        <h2 id="score-title">Your Score</h2>
+        <h2 id="score"></h2>
+        <button type="button" id="score-btn" onclick="backToQuiz()">Back to Quiz</button>
+        <button type="button" id="check-answer" onclick="checkAnswer()">Check Answers</button>
+      </div>
+
+      <!-- Answers Section -->
+      <div id="answerBank">
+        <h2>Answers :</h2>
+        <ol type="1" id="answers"></ol>
+        <button type="button" id="score-btn" onclick="backToQuiz()">Back to Quiz</button>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var audio = document.getElementById("audio");
+      var playPauseBTN = document.getElementById("playPauseBTN");
+      var count = 0;
+      function playPause() {
+        if (count == 0) {
+          count = 1;
+          audio.play();
+          playPauseBTN.innerHTML = "&#9208;";
+        } else {
+          count = 0;
+          audio.pause();
+          playPauseBTN.innerHTML = "&#9658;";
+        }
+      }
+      if ((document.getElementById("bgw").style.display = "none")) {
+        count = 0;
+        audio.pause();
+        playPauseBTN.innerHTML = "&#9658;";
+      }
+    </script>
+
+    <!-- Javascript File Source -->
+    <script src="script.js"></script>
+    <script src="assets\js\bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  </body>
+
+  <!-- Games CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: url(assets/images/underwater-sea.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+    }
+    .img {
+      width: 5.5rem;
+      height: 5.2rem;
+      border-radius: 50%;
+    }
+    .img {
+      position: relative;
+    }
+    #title {
+      text-align: center;
+      padding: 0.8rem 0;
+      font-size: 3rem;
+      color: rgb(49, 70, 7);
+      background: rgba(105, 224, 90, 0.55);
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+    .landing {
+      background: rgba(111, 255, 236, 0.7);
+    }
+    .judul {
+      background: rgba(111, 255, 236, 0.8);
+    }
+    .questions {
+      margin: 3rem auto;
+      width: 90vw;
+      padding: 2rem;
+      background: rgba(111, 255, 236, 0.45);
+      cursor: default;
+      border-radius: 1rem;
+    }
+    #question {
+      margin-bottom: 1rem;
+    }
+    .option {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      border-bottom: solid 0.1rem blue;
+      width: 40rem;
+      max-width: max-content;
+      background: lightblue;
+      border-radius: 1rem;
+    }
+    .option:hover {
+      color: white;
+    }
+    ol {
+      position: relative;
+      padding: 0 1.5rem;
+      color: rgb(1, 73, 73);
+    }
+    .span {
+      display: block;
+      padding: 0.1rem 0.7rem;
+      border-radius: 1rem;
+    }
+    #answer {
+      margin-top: 2.5rem;
+    }
+    #stat {
+      margin-top: 1.5rem;
+      color: black;
+    }
+    .buttons {
+      text-align: center;
+    }
+    button {
+      padding: 0.2rem 1.5rem;
+      border: none;
+      outline: none;
+      font-size: 1.5rem;
+      border-radius: 1.5rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.98);
+      background: rgb(113, 156, 12);
+    }
+    button:active {
+      background: lavender;
+    }
+    #scoreboard,
+    #answerBank {
+      width: 30rem;
+      background: rgba(111, 255, 236, 0.7);
+      padding: 2rem;
+      text-align: center;
+      border-radius: 15px;
+      margin: auto;
+      position: relative;
+      top: 2rem;
+      display: none;
+    }
+    #score-title {
+      margin: 1rem 0;
+    }
+    #score-btn,
+    #check-answer {
+      margin-top: 1rem;
+    }
+    #score {
+      font-size: 2.5rem;
+    }
+    #answerBank li {
+      text-align: left;
+      margin-bottom: 0.2rem;
+      font-size: larger;
+    }
+    #answers {
+      margin-top: 1rem;
+    }
+  </style>
+</html>

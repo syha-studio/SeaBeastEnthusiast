@@ -1,0 +1,631 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets\images\logo.png" />
+    <title>Sea Beasts Enthusiast</title>
+    <!-- CSS dan Bootstrap -->
+    <link rel="stylesheet" href="assets\css\bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="assets\js\jquery-3.6.3.min.js"></script>
+  </head>
+  <style>
+    .zone {
+      color: black;
+      text-shadow: -2px -2px 0 #d6ebff, 2px -2px 0 #d6ebff, -2px 2px 0 #d6ebff, 2px 2px 0 #d6ebff;
+    }
+    .desc {
+      background-color: rgb(255, 255, 255);
+      padding: 1%;
+    }
+    .pict {
+      transition: 0.5s;
+      width: auto;
+      height: 200px;
+      max-width: 350px;
+      border-radius: 10px;
+    }
+    .pict:hover {
+      transition: 0.5s;
+      transform: scale(110%);
+    }
+
+    .sunlight {
+      background: url(assets/images/undersea\ 2.jpg);
+      background-size: cover;
+    }
+    .twilight {
+      background: url(assets/images/undersea\ 4.jpg);
+      background-size: cover;
+    }
+    .midnight {
+      background: url(assets/images/undersea\ 1.jpg);
+      background-size: cover;
+    }
+    .abyssal {
+      background: url(assets/images/undersea\ 3.jpg);
+      background-size: cover;
+    }
+    .hadal {
+      background: url(assets/images/undersea\ 0.jpg);
+      background-size: cover;
+    }
+    .landing {
+      background: rgba(111, 255, 236, 0.7);
+    }
+    .judul {
+      background: rgba(111, 255, 236, 0.8);
+    }
+    .buttons {
+      text-align: center;
+    }
+    button {
+      padding: 0.2rem 1.5rem;
+      border: none;
+      outline: none;
+      font-size: 1.5rem;
+      border-radius: 1.5rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.98);
+      background: rgb(12, 24, 156);
+    }
+    .buttons:active {
+      background: lavender;
+    }
+    #bgw {
+      transition: 2s;
+    }
+  </style>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets\images\logo.png" alt="Logo" width="30" class="d-inline-block align-text-top" />
+          Sea Beasts Enthusiast
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="encyclopedia.html">Encyclopedia</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="games.html">Games</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div class="container pt-5 pb-5" id="overlay">
+      <div class="row">
+        <div class="col">
+          <div class="card text-center landing">
+            <h3 class="card-header pt-3 pb-3 judul" style="font-weight: 700">ARE YOU READY ?</h3>
+            <div class="card-body pt-3 pb-5">
+              <h5 class="card-title pt-3" style="font-weight: 600">Diving Guide</h5>
+              <p class="card-text pt-3 pb-3 ps-3 pe-3 text-center" style="line-height: 180%">
+                Pertama, klik tombol READY untuk mulai menyelam. <br />
+                Kedua, Klik atau Swipe kiri/kanan untuk melihat binatang laut<br />
+                Ketiga, Scroll ke bawah untuk menyelam lebih dalam.<br />
+                <span style="font-weight: 600; font-size: larger">Selamat Menyelam!</span>
+              </p>
+              <button type="button" onclick="off()">READY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function off() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("bgw").style.display = "block";
+        document.getElementById("bgw2").style.display = "block";
+        audio.play();
+        count = 1;
+        playPauseBTN.innerHTML = "&#9208;";
+      }
+    </script>
+    <!-- Akhir Landing Page -->
+
+    <!-- Content -->
+    <div id="bgw" style="display: none">
+      <!-- AUDIO -->
+      <div class="buttons pt-1 pb-2 fixed-bottom">
+        <audio id="audio" autoplay loop>
+          <source src="assets\audio\songforexplore_out_4.mp3" type="audio/mp3" />
+        </audio>
+        <button id="playPauseBTN" onclick="playPause()" style="background-color: blueviolet;">&#9658;</button>
+      </div>
+      <!-- The Sunlight Zone -->
+      <div class="container-fluid pt-5 justify-content-center sunlight pt-5 pb-5">
+        <div class="row pt-3 pb-3">
+          <div class="col text-center">
+            <p class="h1 zone">The Sunlight Zone (Epipelagic)</p>
+          </div>
+        </div>
+        <div id="carouselExampleAutoplaying1" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone\anjing laut.jpg" class="pict" alt="Anjing Laut" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Anjing Laut (Seal)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku adalah mamalia besar dari Ordo Karnivora yang hidup di daerah sejuk.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/bintang laut.jpg" class="pict" alt="Bintang Laut" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Bintang laut (Starfish)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku merupakan binatang yang berkembangbiak secara Ovovivipar.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/hiu.jpeg" class="pict" alt="Hiu" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Hiu (Shark)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku adalah salah satu predator utama untuk mamalia laut.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/gurita.jpg" class="pict" alt="Gurita" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Gurita (Octopus)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku merupakan hewan yang terkenal sangat cerdas diantara hewan Invertebrata.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/cumi-cumi.jpg" class="pict" alt="Cumi-cumi" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Cumi-Cumi (Squid)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku dapat menyemprotkan cairan tinta hitam apabila aku merasa terganggu.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/kepiting.jpg" class="pict" alt="Kepiting" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Kepiting (Crab)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku merupakan hewan yang dikenal mempunyai “ekor” yang sangat pendek.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/kuda laut.jpg" class="pict" alt="Kuda Laut" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Kuda Laut (Seahorse)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku merupakan satu-satunya spesies yang jantannya dapat hamil.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/lobster.jpg" class="pict" alt="Lobster" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Lobster (Lobster)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku memiliki tubuh yang beruas-ruas seperti udang.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/Paus.jpg" class="pict" alt="Paus" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Paus (Whale)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku merupakan kelompok mamalia yang hidup di lautan.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/penyu.jpg" class="pict" alt="Penyu" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Penyu (Sea Turtle)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku adalah kura-kura laut yang bisa ditemukan di semua samudra.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/ubur-ubur.jpeg" class="pict" alt="Ubur-Ubur" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Ubur-Ubur (Jellyfish)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku biasanya memiliki besar hingga 1-2 meter dan berbentuk seperti lonceng.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images\Sunlight zone/udang.jpg" class="pict" alt="Udang" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Udang (Shrimp)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku merupakan hewan yang hidup di perairan, khususnya sungai, laut atau danau.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- The Twilight Zone -->
+      <div class="container-fluid pt-5 justify-content-center twilight pt-5 pb-5">
+        <div class="row pt-3 pb-3">
+          <div class="col text-center">
+            <p class="h1 zone">The Twilight Zone (Mesopelagic)</p>
+          </div>
+        </div>
+        <div id="carouselExampleAutoplaying2" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Twilight zone/comb jelly.jpg" class="pict" alt="Ubur-Ubur sisir" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Ubur-Ubur Sisir (Comb Jellyfish)</h5>
+                      <p class="card-text" style="font-weight: 500">Tubuhku terdiri dari jeli dan memiliki sisir berjumlah 8.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Twilight zone/lentera.jpg" class="pict" alt="Lentera" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Ikan sungut ganda (Anglerfish)</h5>
+                      <p class="card-text" style="font-weight: 500">AKU memiliki antena yang bisa digerak-gerakkan sebagai umpan makananku.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Twilight zone/viperfish.jpg" class="pict" alt="viperfish" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Ikan Viper (Viperfish)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku memiliki gigi yang besar seperti taring dan aku tidak memiliki sisik.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- The Midnight Zone -->
+      <div class="container-fluid pt-5 justify-content-center midnight pt-5 pb-5">
+        <div class="row pt-3 pb-3">
+          <div class="col text-center">
+            <p class="h1 zone">The Midnight Zone (Bathypelagic)</p>
+          </div>
+        </div>
+        <div id="carouselExampleAutoplaying3" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Midnight zone/black swallower.jpg" class="pict" alt="Black_swallower" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Penelan Hitam (Black Swallower)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku bisa memangsa ikan yang berukuran lebih besar dariku.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Midnight zone/cumi vampir.jpg" class="pict" alt="Cumi Vampir" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Cumi - Cumi Vampir (Vampire Dquid)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku merupakan cumi-cumi yang memiliki penampilan yang sekilas aneh dan menyeramkan.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Midnight zone/teripang.jpg" class="pict" alt="Teripang" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Teripang (Sea cucumbers)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku memiliki duri lunak hampir diseluruh permukaan tubuhku.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Midnight zone/tripod.jpg" class="pict" alt="tripod" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Ikan Tripod (Tripodfish)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku berhabitat di perairan dalam beriklim sedang dan tropis.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying3" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying3" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- The Abyssal Zone -->
+      <div class="container-fluid pt-5 justify-content-center abyssal pt-5 pb-5">
+        <div class="row pt-3 pb-3">
+          <div class="col text-center">
+            <p class="h1 zone">The Abyssal Zone (Abyssopelagic)</p>
+          </div>
+        </div>
+        <div id="carouselExampleAutoplaying4" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Abyssal zone/basket starfish.jpg" class="pict" alt="Basket_star fish" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Bintang Keranjang (Basket Starfish)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku memiliki karakteristik yaitu lengan bercabang berulang seperti bintang keranjang.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/Abyssal zone/cumi kolosal.jpg" class="pict" alt="Cumi Kolosal" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Cumi-cumi Kolosal (Colossal squid)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku adalah memiliki bagian tubuh yang dilengkapi dengan kait yang tajam.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying4" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying4" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- The Hadal Zone -->
+      <div class="container-fluid pt-5 justify-content-center hadal pt-5 pb-5">
+        <div class="row pt-3 pb-3">
+          <div class="col text-center">
+            <p class="h1 zone">The Hadal Zone (Trenches)</p>
+          </div>
+        </div>
+        <div id="carouselExampleAutoplaying5" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/trenches zone/belut cusk.jpg" class="pict" alt="Belut Cusk" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Belut Cusk (Cusk-eel)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku suka bersembunyi jika tidak sedang mencari makan dan suka hidup di dasar berlumpur.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row text-center justify-content-center">
+                <div class="col-md-7 p-1 pt-5 pb-5">
+                  <img src="assets\images/trenches zone/cacing tabung raksasa.jpg" class="pict" alt="Cacing Tabung Raksasa" />
+                </div>
+                <div class="col-md-6 p-1">
+                  <div class="card text-center desc">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: 700">Cacing Tabung Raksasa (Giant Tube Worm)</h5>
+                      <p class="card-text" style="font-weight: 500">Aku bisa tumbuh hingga panjang 3 m.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying5" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying5" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var audio = document.getElementById("audio");
+      var playPauseBTN = document.getElementById("playPauseBTN");
+      var count = 0;
+      function playPause() {
+        if (count == 0) {
+          count = 1;
+          audio.play();
+          playPauseBTN.innerHTML = "&#9208;";
+        } else {
+          count = 0;
+          audio.pause();
+          playPauseBTN.innerHTML = "&#9658;";
+        }
+      }
+      if ((document.getElementById("bgw").style.display = "none")) {
+        count = 0;
+        audio.pause();
+        playPauseBTN.innerHTML = "&#9658;";
+      }
+    </script>
+
+    <!-- Bootstrap core JavaScript Placed at the end of the document so the pages load faster -->
+    <script src="assets\js\bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  </body>
+  <footer class="fs-5 text-white text-center fw-bold pb-2 pt-3" style="background-color: white; display: none" id="bgw2">
+    <p style="color: black">Created by <br /><a href="https://github.com/syha-studio"> SYHA </a> &nbsp; | &nbsp; <a href=""> ALYA </a></p>
+  </footer>
+</html>

@@ -1,0 +1,49 @@
+/* Umum */
+body {
+  background: url(assets/images/Sea.png) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+nav {
+  background-color: #ffffff;
+}
+.active {
+  font-weight: 700;
+}
+nav ul li {
+  color: black;
+  font-size: 1rem;
+  border-radius: 3px;
+  list-style: none;
+  padding: 0px 20px;
+  margin: 0;
+  max-height: 65px;
+}
+nav ul li a {
+  color: #000000;
+  position: relative;
+  padding: 5px 0;
+}
+nav ul li a:hover {
+  color: #2c3364;
+}
+nav ul li a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #2c3364;
+  transition: 0.3s;
+  bottom: 0;
+}
+nav ul li a:hover:after {
+  width: 100%;
+}
